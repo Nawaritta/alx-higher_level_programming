@@ -1,0 +1,5 @@
+#!/bin/bash
+outputfile="${PYFILE}c"
+python3 -m py_compile "$PYFILE"
+mv __pycache__/* "$outputfile"
+rm -rf __pycache__
