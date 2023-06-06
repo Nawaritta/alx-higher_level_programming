@@ -1,0 +1,20 @@
+def magic_calculation(a, b, c):
+    if a < b:
+       return c
+    if c > b:
+       return a + b
+     return a * b - c
+
+def main():
+ test_cases = [
+              (2, 5, 8),
+              (10, 5, 3),
+              (7, 5, 10)
+                        ]
+
+for a, b, c in test_cases:
+      result = magic_calculation(a, b, c)
+      print(f"magic_calculation({a}, {b}, {c}) = {result}")
+if __name__ == '__main__':
+    main()
+                                                                    
