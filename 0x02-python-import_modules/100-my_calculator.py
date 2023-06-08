@@ -11,6 +11,7 @@ if __name__ == "__main__":
         b = int(sys.argv[3])
         if op not in operators:
             print("Unknown operator. Available operators: +, -, * and /")
+            sys.exit(1)
         else:
             if op == '+':
                 result = add(a, b)
@@ -25,3 +26,4 @@ if __name__ == "__main__":
 
     else:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        sys.exit(1)
