@@ -28,18 +28,16 @@ int is_palindrome(listint_t **head)
 		tmp = tmp->next;
 		Arr = (int *) realloc(Arr, sizeof(int) * (len + 1));
 	}
-	tmp = *head;
 
 	mid = len;
-	while (len > len/2)
+	while (mid > len / 2)
 	{
-		if (Arr[mid - len] != Arr[len - 1])
+		if (Arr[len - mid] != Arr[mid - 1])
 		{
 			free(Arr);
 			return (0);
 		}
-		len--;
-		tmp = tmp->next;
+		mid--;
 	}
 	free(Arr);
 	return (1);
