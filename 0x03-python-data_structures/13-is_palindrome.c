@@ -15,8 +15,13 @@ int is_palindrome(listint_t **head)
 		return (1);
 
 
-	Arr =  (int *)malloc(sizeof(int));
 	tmp = *head;
+
+	if (tmp->next == NULL)
+		return (1);
+
+	Arr =  (int *)malloc(sizeof(int));
+
 	while (tmp != NULL)
 	{
 		Arr[len++] = tmp->n;
