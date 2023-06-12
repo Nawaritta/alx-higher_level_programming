@@ -30,10 +30,10 @@ int is_palindrome(listint_t **head)
 	}
 	tmp = *head;
 
-	mid = len / 2;
-	while (len > mid)
+	mid = len;
+	while (len > len/2)
 	{
-		if (tmp->n != Arr[len - 1])
+		if (Arr[mid - len] != Arr[len - 1])
 		{
 			free(Arr);
 			return (0);
