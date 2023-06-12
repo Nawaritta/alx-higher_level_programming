@@ -9,24 +9,22 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *tmp = NULL;
 	int len = 0, mid;
-	int *Arr = NULL;
+	int Arr[5000];
 
 	if (*head == NULL)
 		return (1);
 
 
-	tmp = *head;
-
-	if (tmp->next == NULL)
+	if ((*head)->next == NULL)
 		return (1);
+
+	tmp = *head;
 
 	while (tmp != NULL)
 	{
 		len++;
 		tmp = tmp->next;
 	}
-
-	Arr =  (int *)malloc(sizeof(int) * len);
 	tmp = *head;
 	len = 0;
 
@@ -39,11 +37,7 @@ int is_palindrome(listint_t **head)
 	for (mid = 0; mid < len / 2; mid++)
 	{
 		if (Arr[mid] != Arr[len - mid - 1])
-		{
-			free(Arr);
 			return (0);
-		}
 	}
-	free(Arr);
 	return (1);
 }
