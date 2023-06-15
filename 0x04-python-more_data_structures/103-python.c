@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * print_python_bytes - print some basic info about Python lists and Python bytes objects
+ * print_python_bytes - prints basic info about Python lists and bytes objects
  *
  * @p: the PyObject
  */
