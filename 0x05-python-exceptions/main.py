@@ -1,12 +1,23 @@
 #!/usr/bin/python3
-safe_print_division = __import__('3-safe_print_division').safe_print_division
+safe_function = __import__('101-safe_function').safe_function
 
-a = 12
-b = 2
-result = safe_print_division(a, b)
-print("{:d} / {:d} = {}".format(a, b, result))
 
-a = 12
-b = 0
-result = safe_print_division(a, b)
-print("{:d} / {:d} = {}".format(a, b, result))
+def my_div(a, b):
+    return a / b
+
+result = safe_function(my_div, 10, 2)
+print("result of my_div: {}".format(result))
+
+result = safe_function(my_div, 10, 0)
+print("result of my_div: {}".format(result))
+
+
+def print_list(my_list, len):
+    i = 0
+    while i < len:
+        print(my_list[i])
+        i += 1
+        return len
+
+result = safe_function(print_list, [1, 2, 3, 4], 10)
+print("result of print_list: {}".format(result))
