@@ -17,33 +17,6 @@ Returns the real number of elements printed
 You have to use try: / except:
 You are not allowed to import any module
 You are not allowed to use len()
-guillaume@ubuntu:~/0x05$ cat 0-main.py
-
- - #!/usr/bin/python3
- - * safe_print_list = __import__('0-safe_print_list').safe_print_list
- - *
- - * my_list = [1, 2, 3, 4, 5]
- - *
- - * nb_print = safe_print_list(my_list, 2)
- - * print("nb_print: {:d}".format(nb_print))
- - * nb_print = safe_print_list(my_list, len(my_list))
- - * print("nb_print: {:d}".format(nb_print))
- - * nb_print = safe_print_list(my_list, len(my_list) + 2)
- - * print("nb_print: {:d}".format(nb_print))
- - *
- - * guillaume@ubuntu:~/0x05$ ./0-main.py
- - * 12
- - * nb_print: 2
- - * 12345
- - * nb_print: 5
- - * 12345
- - * nb_print: 5
- - * guillaume@ubuntu:~/0x05$
- - * Repo:
- -
-GitHub repository: alx-higher_level_programming
-Directory: 0x05-python-exceptions
-File: 0-safe_print_list.py
 
 
 ### 1. Safe printing of an integers list
@@ -61,37 +34,7 @@ You have to use "{:d}".format() to print as integer
 You are not allowed to import any module
 You are not allowed to use type()
 
-*guillaume@ubuntu:~/0x05$ cat 1-main.py
-*
-*#!/usr/bin/python3
-*safe_print_integer = __import__('1-safe_print_integer').safe_print_integer
-*
-*value = 89
-*has_been_print = safe_print_integer(value)
-*if not has_been_print:
-*    print("{} is not an integer".format(value))
-*
-*value = -89
-*has_been_print = safe_print_integer(value)
-*if not has_been_print:
-*    print("{} is not an integer".format(value))
-*
-*value = "School"
-*has_been_print = safe_print_integer(value)
-*if not has_been_print:
-*    print("{} is not an integer".format(value))
-*
-*guillaume@ubuntu:~/0x05$ ./1-main.py
-*89
-*-89
-*School is not an integer
-*guillaume@ubuntu:~/0x05$
-*Repo:
-*
 
-GitHub repository: alx-higher_level_programming
-Directory: 0x05-python-exceptions
-File: 1-safe_print_integer.py
 
 ### 2. Print and count integers
 mandatory
@@ -108,42 +51,6 @@ You have to use "{:d}".format() to print an integer
 You are not allowed to import any module
 You are not allowed to use len()
 
-*guillaume@ubuntu:~/0x05$ cat 2-main.py
-*#!/usr/bin/python3
-*safe_print_list_integers = \
-*    __import__('2-safe_print_list_integers').safe_print_list_integers
-*
-*my_list = [1, 2, 3, 4, 5]
-*
-*nb_print = safe_print_list_integers(my_list, 2)
-*print("nb_print: {:d}".format(nb_print))
-*
-*my_list = [1, 2, 3, "School", 4, 5, [1, 2, 3]]
-*nb_print = safe_print_list_integers(my_list, len(my_list))
-*print("nb_print: {:d}".format(nb_print))
-*
-*nb_print = safe_print_list_integers(my_list, len(my_list) + 2)
-*print("nb_print: {:d}".format(nb_print))
-*
-*guillaume@ubuntu:~/0x05$ ./2-main.py
-*12
-*nb_print: 2
-*12345
-*nb_print: 5
-*12345Traceback (most recent call last):
-*  File "./2-main.py", line 14, in <module>
-*      nb_print = safe_print_list_integers(my_list, len(my_list) + 2)
-*        File "/0x05/2-safe_print_list_integers.py", line 7, in safe_print_list_integers
-*	    print("{:d}".format(my_list[i]), end="")
-*	    IndexError: list index out of range
-*	    guillaume@ubuntu:~/0x05$
-*	    Repo:
-*
-
-GitHub repository: alx-higher_level_programming
-Directory: 0x05-python-exceptions
-File: 2-safe_print_list_integers.py
-
 
 
 ### 3. Integers division with debug
@@ -158,33 +65,6 @@ You have to use try: / except: / finally:
 You have to use "{}".format() to print the result
 You are not allowed to import any module
 
-
-*guillaume@ubuntu:~/0x05$ cat 3-main.py
-*#!/usr/bin/python3
-*safe_print_division = __import__('3-safe_print_division').safe_print_division
-*
-*a = 12
-*b = 2
-*result = safe_print_division(a, b)
-*print("{:d} / {:d} = {}".format(a, b, result))
-*
-*a = 12
-*b = 0
-*result = safe_print_division(a, b)
-*print("{:d} / {:d} = {}".format(a, b, result))
-*
-*guillaume@ubuntu:~/0x05$ ./3-main.py
-*Inside result: 6.0
-*12 / 2 = 6.0
-*Inside result: None
-*12 / 0 = None
-*guillaume@ubuntu:~/0x05$
-
-Repo:
-
-GitHub repository: alx-higher_level_programming
-Directory: 0x05-python-exceptions
-File: 3-safe_print_division.py
 
 ### 4. Divide a list
 mandatory
@@ -204,29 +84,101 @@ print: out of range
 You have to use try: / except: / finally:
 You are not allowed to import any module
 
-*guillaume@ubuntu:~/0x05$ cat 4-main.py
-*#!/usr/bin/python3
-*list_division = __import__('4-list_division').list_division
-*
-*my_l_1 = [10, 8, 4]
-*my_l_2 = [2, 4, 4]
-*result = list_division(my_l_1, my_l_2, max(len(my_l_1), len(my_l_2)))
-*print(result)
-*
-*print("--")
-*
-*my_l_1 = [10, 8, 4, 4]
-*my_l_2 = [2, 0, "H", 2, 7]
-*result = list_division(my_l_1, my_l_2, max(len(my_l_1), len(my_l_2)))
-*print(result)
-*
-*guillaume@ubuntu:~/0x05$ ./4-main.py
-*[5.0, 2.0, 1.0]
-*--
-*division by 0
-*wrong type
-*out of range
-*[5.0, 0, 0, 2.0, 0]
-*guillaume@ubuntu:~/0x05$
 
-Repo:
+### 5. Raise exception
+mandatory
+Write a function that raises a type exception.
+
+Prototype: def raise_exception():
+You are not allowed to import any module
+
+
+
+### 6. Raise a message
+mandatory
+Write a function that raises a name exception with a message.
+
+Prototype: def raise_exception_msg(message=""):
+You are not allowed to import any module
+
+
+
+### 7. Safe integer print with error message
+advanced
+Write a function that prints an integer.
+
+Prototype: def safe_print_integer_err(value):
+value can be any type (integer, string, etc.)
+The integer should be printed followed by a new line
+Returns True if value has been correctly printed (it means the value is an integer)
+Otherwise, returns False and prints in stderr the error precede by Exception:
+You have to use try: / except:
+You have to use "{:d}".format() to print as integer
+You are not allowed to use type()
+
+
+
+### 8. Safe function
+advanced
+Write a function that executes a function safely.
+
+Prototype: def safe_function(fct, *args):
+You can assume fct will be always a pointer to a function
+Returns the result of the function,
+Otherwise, returns None if something happens during the function and prints in stderr the error precede by Exception:
+You have to use try: / except:
+
+
+
+### 9. ByteCode -> Python #4
+advanced
+Write the Python function def magic_calculation(a, b): that does exactly the same as the following Python bytecode:
+
+
+
+### 10. CPython #2: PyFloatObject
+advanced
+Create three C functions that print some basic info about Python lists, Python bytes an Python float objects.
+
+
+Python lists:
+
+Prototype: void print_python_list(PyObject *p);
+Format: see example
+If p is not a valid PyListObject, print an error message (see example)
+Python bytes:
+
+Prototype: void print_python_bytes(PyObject *p);
+Format: see example
+Line “first X bytes”: print a maximum of 10 bytes
+If p is not a valid PyBytesObject, print an error message (see example)
+Python float:
+
+Prototype: void print_python_float(PyObject *p);
+Format: see example
+If p is not a valid PyFloatObject, print an error message (see example)
+Read /usr/include/python3.4/floatobject.h
+About:
+
+Python version: 3.4
+You are allowed to use the C standard library
+Your shared library will be compiled with this command line: gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,libPython.so -o libPython.so -fPIC -I/usr/include/python3.4 103-python.c
+You are not allowed to use the following macros/functions:
+Py_SIZE
+Py_TYPE
+PyList_Size
+PyList_GetItem
+PyBytes_AS_STRING
+PyBytes_GET_SIZE
+PyBytes_AsString
+PyBytes_AsStringAndSize
+PyFloat_AS_DOUBLE
+PySequence_GetItem
+PySequence_Fast_GET_SIZE
+PySequence_Fast_GET_ITEM
+PySequence_ITEM
+PySequence_Fast_ITEMS
+NOTE:
+
+The python script will be launched using the -u option (Force stdout to be unbuffered).
+It is strongly advised to either use setbuf(stdout, NULL); or fflush(stdout) in your C functions IF you choose to use printf. The reason to that is that Pythonsprintand libCs printf don’t share the same buffer, and the output can appear disordered.
