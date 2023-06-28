@@ -20,8 +20,7 @@ class Square():
             return self.__size ** 2
 
         def my_print(self):
+            if not self.__size:
+                print()
             for i in range(self.__size):
-                try:
-                    print("#" * self.__size)
-                except Exception as e:
-                    print()
+                print("#" * self.__size)def my_print(self):
