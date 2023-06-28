@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""Class representing a square"""
+
+
 class Square():
+    """Square class Area of square"""
 
     def __init__(self, size=0):
         if (type(size) is not int):

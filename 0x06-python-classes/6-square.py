@@ -1,19 +1,28 @@
 #!/usr/bin/python3
+"""Python classes"""
+
+
 class Square():
+    """square class Coordinates of a square"""
+
     def __init__(self, size=0, position=(0, 0)):
+        """Class constructor"""
         self.size = size
         self.position = position
 
     @property
     def size(self):
+        """get size"""
         return self.__size
 
     @property
     def position(self):
+        """get position"""
         return self.__position
 
     @size.setter
     def size(self, value):
+        """set size"""
         if (type(value) is not int):
             raise TypeError("size must be an integer")
         elif (value < 0):
@@ -23,6 +32,7 @@ class Square():
 
     @position.setter
     def position(self, value):
+        """set position"""
         if (type(value) is not tuple):
             raise TypeError("position must be a tuple of 2 positive\
             integers")
@@ -39,9 +49,11 @@ class Square():
             self.__position = value
 
     def area(self):
+        """get area"""
         return self.size ** 2
 
     def my_print(self):
+        """print square"""
         if self.size == 0:
             print()
         else:
