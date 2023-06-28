@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 class Square():
+
     def __init__(self, size=0):
         self.__size = size
 
@@ -16,12 +17,12 @@ class Square():
             raise ValueError("size must be >= 0")
         self.__size = value
 
-    def area(self):
-        return self.__size ** 2
+        def area(self):
+            return self.__size ** 2
 
-    def my_print(self):
-        for i in range(self.__size):
-            try:
-                print("#" * self.__size)
-            except Exception as e:
-                print()
+        def my_print(self):
+            for i in range(self.__size):
+                try:
+                    print("#" * self.__size)
+                except Exception as e:
+                    print()
