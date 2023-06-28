@@ -18,7 +18,7 @@ class Square():
     @property
     def position(self):
         """get position"""
-        return self.__position
+        return self.position
 
     @size.setter
     def size(self, value):
@@ -28,7 +28,7 @@ class Square():
         elif (value < 0):
             raise ValueError("size must be >= 0")
         else:
-            self.__size = value
+            self.size = value
 
     @position.setter
     def position(self, value):
@@ -46,7 +46,7 @@ class Square():
             raise TypeError("position must be a tuple of 2 positive\
             integers")
         else:
-            self.__position = value
+            self.position = value
 
     def area(self):
         """get area"""
