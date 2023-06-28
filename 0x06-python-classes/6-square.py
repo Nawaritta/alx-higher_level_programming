@@ -50,15 +50,15 @@ class Square():
 
     def area(self):
         """get area"""
-        return self.size ** 2
+        return self.__size ** 2
 
     def my_print(self):
         """print square"""
-        if self.size == 0:
+        if self.__size == 0:
             print()
         else:
             for i in range(self.position[1]):
                 print()
-            for i in range(self.size):
+            for i in range(self._size):
                 print(" " * self.position[0], end="")
-                print("#" * self.size)
+                print("#" * self._size)
