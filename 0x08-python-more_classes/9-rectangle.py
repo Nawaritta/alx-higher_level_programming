@@ -74,14 +74,14 @@ class Rectangle:
         """Returns a string representation of the rectangle to be able
         to recreate a new instance by using eval()
         """
-        return f"Rectangle({self._width}, {self._height})"
+        return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
         """Prints a message when the instance is deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
 
-    @saticmethod
+    @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """Compares two rectangles and returns the biggest one"""
         if not isinstance(rect_1, Rectangle):
