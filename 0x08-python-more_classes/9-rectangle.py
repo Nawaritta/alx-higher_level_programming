@@ -20,10 +20,12 @@ class Rectangle:
 
     @property
     def width(self):
+        """gets the width attribute."""
         return self.__width
 
     @width.setter
     def width(self, value):
+        """sets the width attribute"""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -32,9 +34,11 @@ class Rectangle:
 
     @property
     def height(self):
+        """gets the height"""
         return self.__height
 
     @height.setter
+    """sets the height"""
     def height(self, value):
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -43,14 +47,17 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+        """computes the ares"""
         return self.__height * self.__width
 
     def perimeter(self):
+        """computes the perimeter"""
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2*(self.__height + self.__width)
 
     def __str__(self):
+        """Returns a string representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return ""
 
@@ -63,13 +70,18 @@ class Rectangle:
         return rec_str
 
     def __repr__(self):
+        """Returns a string representation of the rectangle to be able
+        to recreate a new instance by using eval()
+        """
         return f"Rectangle({self._width}, {self._height})"
 
     def __del__(self):
+        """Prints a message when the instance is deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
 
-    @staticmethod
+    @saticmethod
+    """Compares two rectangles and returns the biggest one"""
     def bigger_or_equal(rect_1, rect_2):
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
@@ -81,5 +93,6 @@ class Rectangle:
             return rect_2
 
     @classmethod
+    """Returns a rectangle square"""
     def square(cls, size=0):
         return cls(size, size)
