@@ -39,8 +39,8 @@ class Rectangle:
         return self.__height
 
     @height.setter
-    """sets the height"""
     def height(self, value):
+        """sets the height"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -82,8 +82,8 @@ class Rectangle:
         Rectangle.number_of_instances -= 1
 
     @saticmethod
-    """Compares two rectangles and returns the biggest one"""
     def bigger_or_equal(rect_1, rect_2):
+        """Compares two rectangles and returns the biggest one"""
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
@@ -94,6 +94,6 @@ class Rectangle:
             return rect_2
 
     @classmethod
-    """Returns a rectangle square"""
     def square(cls, size=0):
+        """Returns a rectangle square"""
         return cls(size, size)
