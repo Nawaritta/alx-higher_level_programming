@@ -2,6 +2,7 @@
 
 """Function that copies a list"""
 
+
 def copy_list(l):
     """copy list
     args:
