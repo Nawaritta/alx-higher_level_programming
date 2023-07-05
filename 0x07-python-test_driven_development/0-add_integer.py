@@ -9,6 +9,14 @@ def add_integer(a, b=98):
     param b:  (Default value = 98)
 
     """
+    if a in (float('inf'), float('-inf')):
+        raise OverflowError("infinity cannot be converted to int")
+    if b in (float('inf'), float('-inf')):
+        raise OverflowError("infinity cannot be converted to int")
+
+    if a == float('nan') or b == float('nan'):
+        raise TypeError("NaN cannot be converted to int")
+
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
 

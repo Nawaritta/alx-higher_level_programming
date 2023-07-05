@@ -74,16 +74,16 @@ OverflowError: infinity cannot be converted to int
 Traceback (most recent call last):
 OverflowError: infinity cannot be converted to int
 
->>> add_integer(float('NaN'))
+>>> add_integer(float('nan'))
 Traceback (most recent call last):
 TypeError: NaN cannot be converted to int
 
 
->>> add_integer(float('NaN'), 5)
+>>> add_integer(float('nan'), 5)
 Traceback (most recent call last):
 TypeError: NaN cannot be converted to int
 
 
->>> add_integer(5, float('NaN'))
+>>> add_integer(5, float('nan'))
 Traceback (most recent call last):
 TypeError: NaN cannot be converted to int
