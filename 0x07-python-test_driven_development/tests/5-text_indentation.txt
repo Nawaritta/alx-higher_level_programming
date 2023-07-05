@@ -1,0 +1,37 @@
+# 5-text_indentation.txt
+===============================
+ How to 5-text_indentation.py
+===============================
+
+This module provides a function called `text_indentation(text)` for printing a text with 2 new lines after each occurrence of the characters '.', '?' and ':'.
+
+Function Signature
+==================
+
+```python
+def text_indentation(text):
+    """
+    Prints the given text with 2 new lines after each occurrence of '.', '?' and ':'.
+
+    Args:
+        text (str): The text to be indented.
+
+    Raises:
+        TypeError: If text is not a string.
+
+    Examples:
+        >>> text_indentation = __import__('5-text_indentation').text_indentation
+        >>> text_indentation("Hello. How are you?")
+        Hello
+        How are you?
+
+        >>> text_indentation("This is a test. Can you pass it?")
+        This is a test
+        Can you pass it?
+
+        >>> text_indentation("No punctuation marks")
+        No punctuation marks
+
+        >>> text_indentation(123)
+        Traceback (most recent call last):
+        TypeError: text must be a string

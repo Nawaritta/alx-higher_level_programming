@@ -1,0 +1,41 @@
+# 2-matrix_divided.txt
+===============================
+ How to use 2-matrix_divided.txt
+===============================
+
+This module provides a function called `matrix_divided(matrix, div)` for dividing all elements of a matrix by a given number.
+
+Function Signature
+==================
+
+```matrix_divided(matrix, div):
+    """
+    Divides all elements of a matrix by a given number and returns a new matrix.
+
+    Args:
+        matrix (list of lists): The matrix containing integers or floats.
+        div (int or float): The number to divide the matrix elements by.
+
+    Returns:
+        list of lists: The new matrix with elements divided by div, rounded to 2 decimal places.
+
+    Raises:
+        TypeError: If matrix is not a list of lists of integers or floats.
+        TypeError: If each row of the matrix does not have the same size.
+        TypeError: If div is not a number (integer or float).
+        ZeroDivisionError: If div is equal to 0.
+
+    Examples:
+        >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+        >>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        >>> matrix_divided(matrix, 2)
+        [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0], [3.5, 4.0, 4.5]]
+
+        >>> matrix = [[10, 20], [30, 40], [50, 60]]
+        >>> matrix_divided(matrix, 3)
+        [[3.33, 6.67], [10.0, 13.33], [16.67, 20.0]]
+
+        >>> matrix = [[1, 2], [3, 4], [5, 6]]
+        >>> matrix_divided(matrix, 0)
+        Traceback (most recent call last):
+        ZeroDivisionError: division by zero

@@ -1,0 +1,47 @@
+# 4-print_square.txt
+===============================
+ How to 4-print_square.py
+===============================
+
+This module provides a function called `print_square()` for printing a square with the character '#'.
+
+Function Signature
+==================
+
+```python
+def print_square(size):
+    """
+    Prints a square with the character '#' of the given size length.
+
+    Args:
+        size (int): The length of the square.
+
+    Raises:
+        TypeError: If size is not an integer or a float.
+        ValueError: If size is less than 0.
+        TypeError: If size is a float and is less than 0.
+
+    Examples:
+        >>> print_square = __import__("4-print_square").print_square	 >>> print_square(3)
+        ###
+        ###
+        ###
+
+        >>> print_square(5)
+        #####
+        #####
+        #####
+        #####
+        #####
+
+        >>> print_square(0)
+        (no output)
+
+        >>> print_square(-2)
+        Traceback (most recent call last):
+        ValueError: size must be >= 0
+
+        >>> print_square(4.5)
+        Traceback (most recent call last):
+        TypeError: size must be an integer
+    """
