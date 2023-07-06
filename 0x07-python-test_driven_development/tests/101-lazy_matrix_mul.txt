@@ -1,0 +1,53 @@
+# 101-lazy_matrix_mul.txt
+===============================
+ How to 101-lazy_matrix_mul.py
+===============================
+
+This module provides a function called ` lazy_matrix_mul(m_a, m_b)` for multiplying two matrices.
+
+Function Signature
+==================
+
+```lazy_matrix_mul(m_a, m_b):
+    """
+    Multiplies two matrices.
+
+    Args:
+        m_a (list): The first matrix represented as a list of lists.
+        m_b (list): The second matrix represented as a list of lists.
+
+    Raises:
+        TypeError: If m_a or m_b is not a list, or if m_a or m_b is not a list of lists, or if one element of the matrices is not an integer or float, or if m_a or m_b is not a rectangle (rows of different sizes).
+        ValueError: If m_a or m_b is empty or if m_a and m_b cannot be multiplied.
+
+    Returns:
+        list: The result of matrix multiplication.
+
+    Examples:
+         >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+         >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+         array([[ 7, 10],
+	        [15, 22]])
+
+        >>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+        array([[13, 16]])
+
+        >>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10]])
+        Traceback (most recent call last):
+        ValueError: m_a and m_b can't be multiplied
+
+        >>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], ['a', 8]])
+        Traceback (most recent call last):
+        TypeError: m_b should contain only integers or floats
+
+        >>> lazy_matrix_mul([[1, 2], [3, 4]], [5, 6])
+        Traceback (most recent call last):
+        TypeError: m_b must be a list of lists
+
+        >>> lazy_matrix_mul([[1, 2], [3, 4]], [])
+        Traceback (most recent call last):
+        ValueError: m_b can't be empty
+
+	>>> lazy_matrix_mul([[0, 1, 2], [3, 4]], [[5, 6, 7], [8, 9, 10]])
+        Traceback (most recent call last):
+        TypeError: each row of m_a must be of the same size

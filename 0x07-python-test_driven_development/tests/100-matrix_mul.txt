@@ -3,7 +3,7 @@
  How to 100-matrix_mul.py
 ===============================
 
-This module provides a function called `matrix_mul()` for multiplying two matrices.
+This module provides a function called ` matrix_mul(m_a, m_b)` for multiplying two matrices.
 
 Function Signature
 ==================
@@ -24,14 +24,14 @@ Function Signature
         list: The result of matrix multiplication.
 
     Examples:
-         >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
-         >>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
-        [[19, 22], [43, 50]]
+         >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+         >>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+         [[7, 10], [15, 22]]
 
-        >>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10], [11, 12]])
-        [[58, 64], [139, 154]]
+        >>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+        [[13, 16]]
 
-        >>> matrix_mul([[1, 2], [3, 4]], [[5, 6, 7], [8, 9, 10]])
+        >>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10]])
         Traceback (most recent call last):
         ValueError: m_a and m_b can't be multiplied
 
@@ -46,3 +46,7 @@ Function Signature
         >>> matrix_mul([[1, 2], [3, 4]], [])
         Traceback (most recent call last):
         ValueError: m_b can't be empty
+
+	>>> matrix_mul([[0, 1, 2], [3, 4]], [[5, 6, 7], [8, 9, 10]])
+        Traceback (most recent call last):
+        TypeError: each row of m_a must be of the same size
