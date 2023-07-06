@@ -81,10 +81,30 @@ The parameter ``div`` must be either an int or float.
 
 
 The parameter ``div`` must be different from zero
-
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
     >>> matrix_divided(matrix, 0)
     Traceback (most recent call last):
     ZeroDivisionError: division by zero
+
+
+Missing One or all arguments
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+    >>> matrix_divided(matrix)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+
+    >>> matrix_divided(2)
+    Traceback (most recent call last):
+    ...
+    TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
     >>> matrix_divided()
     Traceback (most recent call last):
