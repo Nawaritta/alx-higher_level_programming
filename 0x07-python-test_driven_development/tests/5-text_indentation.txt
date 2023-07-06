@@ -21,13 +21,16 @@ def text_indentation(text):
 
     Examples:
         >>> text_indentation = __import__('5-text_indentation').text_indentation
-        >>> text_indentation("Hello. How are you?")
-        Hello
-        How are you?
+        >>> text_indentation("print 2 new lines after: 2 lines were skipped.")
+        print 2 new lines after:
+	<BLANKLINE>
+	2 lines were skipped.
 
         >>> text_indentation("This is a test. Can you pass it?")
-        This is a test
+        This is a test.
+	<BLANKLINE>
         Can you pass it?
+
 
         >>> text_indentation("No punctuation marks")
         No punctuation marks

@@ -11,12 +11,14 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     found = False
-    for c in text:
+    for i, c in enumerate(text):
         if found and c == ' ':
             continue
         found = False
+        print(c, end='')
         if c in ['.', '?', ':']:
-            print(c, "\n" * 2, end='')
+            if i == len(text) - 1:
+                print("\n", end='')
+            else:
+                print("\n"*2, end='')
             found = True
-        else:
-            print(c, end='')
