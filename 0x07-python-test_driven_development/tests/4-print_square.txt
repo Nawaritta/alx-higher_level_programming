@@ -44,4 +44,3 @@ def print_square(size):
         >>> print_square(4.5)
         Traceback (most recent call last):
         TypeError: size must be an integer
-    """
