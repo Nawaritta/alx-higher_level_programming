@@ -29,8 +29,8 @@ Function Signature
 
         >>> say_my_name(123, "Smith")
         Traceback (most recent call last):
-        TypeError: first_name must be a string or last_name must be a string
+        TypeError: first_name must be a string
 
         >>> say_my_name("Jane", 456)
         Traceback (most recent call last):
-        TypeError: first_name must be a string or last_name must be a string
+        TypeError: last_name must be a string
