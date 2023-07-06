@@ -16,7 +16,7 @@ def text_indentation(text):
             continue
         found = False
         if c in ['.', '?', ':']:
-            print("\n" * 2, end='')
+            print(c, "\n" * 2, end='')
             found = True
         else:
             print(c, end='')
