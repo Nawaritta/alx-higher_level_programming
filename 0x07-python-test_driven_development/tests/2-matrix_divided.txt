@@ -37,11 +37,11 @@ Function Signature
         ZeroDivisionError: division by zero
 
 
-The divider is infinit `div = 10`
+The divider is infinit all values == 0.0
 
     	    >>> matrix = [[10, 20, 30]]
 	    >>> matrix_divided(matrix,(float('inf')))
-	    [[1.0, 2.0, 3.0]]
+	    [[0.0, 0.0, 0.0]]
 
 Insupported type of Matrices
 ============================

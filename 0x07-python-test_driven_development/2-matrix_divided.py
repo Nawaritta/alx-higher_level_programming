@@ -13,8 +13,9 @@ def matrix_divided(matrix, div):
     """
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    if div == float('inf') or div == -float('inf') or div != div:
-        div = 10
+    if div == float('inf') or div == -float('inf'):
+        return [[0.0 for item in row] for row in matrix]
+
     if matrix == [] or \
        not isinstance(matrix, list) \
        or not all(isinstance(row, list) for row in matrix) \
