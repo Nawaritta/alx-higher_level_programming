@@ -151,11 +151,11 @@ Test present: missing one argument
 
          >>> lazy_matrix_mul([[1, 2],[3, 4]])
 	 Traceback (most recent call last):
-	 NameError: name 'matrix_mul' is not defined
+	 TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
 
 Test present: missing two arguments
 ------------------------------------
 
 	>>> lazy_matrix_mul()
         Traceback (most recent call last):
-        NameError: name 'matrix_mul' is not defined
+        TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
