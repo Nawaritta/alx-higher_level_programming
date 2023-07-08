@@ -17,37 +17,146 @@ Function Signature
         m_b (list): The second matrix represented as a list of lists.
 
     Raises:
-        TypeError: If m_a or m_b is not a list, or if m_a or m_b is not a list of lists, or if one element of the matrices is not an integer or float, or if m_a or m_b is not a rectangle (rows of different sizes).
+        TypeError: If m_a or m_b is not a list, or if m_a or m_b is not
+	a list of lists, or if one element of the matrices is not an integer or
+	float, or if m_a or m_b is not a rectangle (rows of different sizes).
         ValueError: If m_a or m_b is empty or if m_a and m_b cannot be multiplied.
 
     Returns:
         list: The result of matrix multiplication.
 
     Examples:
-         >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
-         >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
-         array([[ 7, 10],
-	        [15, 22]])
+         >>> lazy_matrix_mul = __import__('100-lazy_matrix_mul').lazy_matrix_mul
+
+
+Test present: ma = List of lists of number / mb = List of lists of number
+-------------------------------------------------------------------------
+
+	 >>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+         [[7, 10], [15, 22]]
 
         >>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
-        array([[13, 16]])
+        [[13, 16]]
 
-        >>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10]])
-        Traceback (most recent call last):
-        ValueError: m_a and m_b can't be multiplied
 
-        >>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], ['a', 8]])
+
+Test present: ma = List of lists of number / mb = string
+=> TypeError: m_b must be a list
+-----------------------------------------------------------
+
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], ['a', 8]])
         Traceback (most recent call last):
         TypeError: m_b should contain only integers or floats
 
-        >>> lazy_matrix_mul([[1, 2], [3, 4]], [5, 6])
-        Traceback (most recent call last):
-        TypeError: m_b must be a list of lists
 
-        >>> lazy_matrix_mul([[1, 2], [3, 4]], [])
+Test present: ma = String / mb = List of lists of number
+=> TypeError: m_a must be a list
+---------------------------------------------------------
+
+        >>> lazy_matrix_mul("m_a is a string", [[1, 2],[3, 8]])
+        Traceback (most recent call last):
+        TypeError: m_a should contain only integers or floats
+
+
+Test present: ma = List of integers / mb = List of lists of number
+=> TypeError: m_a must be a list of lists
+-----------------------------------------------------------------
+
+	>>> lazy_matrix_mul([1, 2, 2], [[1, 2],[3, 8]])
+        Traceback (most recent call last):
+	TypeError: m_a must be a list of lists
+
+
+
+Test present: ma = List of lists of number / mb = List of integers
+=> TypeError: m_b must be a list of lists
+-----------------------------------------------------------------
+
+ 	>>> lazy_matrix_mul([[1, 2],[3, 8]], [1, 2, 3])
+        Traceback (most recent call last):
+	TypeError: m_b must be a list of lists
+
+
+
+Test present: ma = empty / mb = List of lists of number
+=> ValueError: m_a can’t be empty
+----------------------------------------------------------------
+
+        >>> lazy_matrix_mul([], [[1, 2], [3, 4]])
+        Traceback (most recent call last):
+        ValueError: m_a can't be empty
+
+
+
+Test present: ma = List of lists of number / mb = Empty
+=> ValueError: m_b can’t be empty
+----------------------------------------------------------------
+
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [])
         Traceback (most recent call last):
         ValueError: m_b can't be empty
+
+
+Test present: ma = List of lists of not number / mb = List of lists of number
+=> TypeError: m_a should contain only integers or floats
+----------------------------------------------------------------------------
+
+        >>> lazy_matrix_mul([["m_a", "list","of list"], ["of", "not numbers"]], [[1, 2],[3, 8]])
+        Traceback (most recent call last):
+        TypeError: m_a should contain only integers or floats
+
+
+
+Test present: ma = List of lists of number / mb = List of lists of not number
+=> TypeError: m_b should contain only integers or floats
+------------------------------------------------------------------------------
+
+        >>> lazy_matrix_mul([[1, 2],[3,4]],[["m_b", "list","of list"], ["of", "not numbers"]], [[1, 2],[3, 8]])
+        Traceback (most recent call last):
+        TypeError: m_b should contain only integers or floats
+
+
+Test present: ma = List of lists of number various size / mb = List of lists of number
+=> TypeError: each row of m_a must should be of the same size
+--------------------------------------------------------------------------------------
 
 	>>> lazy_matrix_mul([[0, 1, 2], [3, 4]], [[5, 6, 7], [8, 9, 10]])
         Traceback (most recent call last):
         TypeError: each row of m_a must be of the same size
+
+
+
+Test present: ma = List of lists of number / mb = List of lists of number various size
+=> TypeError: each row of m_b must should be of the same size
+-----------------------------------------------------------------------------------------
+
+	>>> lazy_matrix_mul([[1, 2],[3, 4]], [[0, 1, 2], [3, 4]])
+        Traceback (most recent call last):
+        TypeError: each row of m_b must be of the same size
+
+
+
+Test present: ma = List of lists of number / mb = List of lists of number but not correct
+=> ValueError: ma and mb can’t be multiplied
+------------------------------------------------------------------------------------------
+
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8], [9, 10]])
+        Traceback (most recent call last):
+        ValueError: m_a and m_b can't be multiplied
+
+
+
+Test present: missing one argument
+-----------------------------------
+
+         >>> lazy_matrix_mul([[1, 2],[3, 4]])
+	 Traceback (most recent call last):
+	 TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+Test present: missing two arguments
+------------------------------------
+
+	>>> lazy_matrix_mul()
+        Traceback (most recent call last):
+        TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
