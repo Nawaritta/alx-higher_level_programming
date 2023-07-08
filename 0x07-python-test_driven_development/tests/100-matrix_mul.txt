@@ -39,7 +39,6 @@ Test present: ma = List of lists of number / mb = List of lists of number
         [[13, 16]]
 
 
-
 Test present: ma = List of lists of number / mb = string
 => TypeError: m_b must be a list
 -----------------------------------------------------------
@@ -58,6 +57,14 @@ Test present: ma = String / mb = List of lists of number
         TypeError: m_a must be a list
 
 
+Test present: ma = String / mb = List of lists of number
+=> TypeError: m_a must be a list
+---------------------------------------------------------
+
+        >>> matrix_mul([[1, 2],[3, 8]], "m_b is a string")
+        Traceback (most recent call last):
+        TypeError: m_b must be a list
+
 Test present: ma = List of integers / mb = List of lists of number
 => TypeError: m_a must be a list of lists
 -----------------------------------------------------------------
@@ -65,7 +72,6 @@ Test present: ma = List of integers / mb = List of lists of number
 	>>> matrix_mul([1, 2, 2], [[1, 2],[3, 8]])
         Traceback (most recent call last):
 	TypeError: m_a must be a list of lists
-
 
 
 Test present: ma = List of lists of number / mb = List of integers
@@ -87,7 +93,6 @@ Test present: ma = empty / mb = List of lists of number
         ValueError: m_a can't be empty
 
 
-
 Test present: ma = List of lists of number / mb = Empty
 => ValueError: m_b can’t be empty
 ----------------------------------------------------------------
@@ -104,7 +109,6 @@ Test present: ma = List of lists of not number / mb = List of lists of number
         >>> matrix_mul([["m_a", "list","of list"], ["of", "not numbers"]], [[1, 2],[3, 8]])
         Traceback (most recent call last):
         TypeError: m_a should contain only integers or floats
-
 
 
 Test present: ma = List of lists of number / mb = List of lists of not number

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-matrix_mul = __import__('100-matrix_mul').matrix_mul
+lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
 
 try:
@@ -13,7 +13,7 @@ except Exception as e:
 
 
 try:
-    print(matrix_mul([[1, 2], [3, 4]]))
+    print(matrix_mul()
 
 except Exception as e:
     print(e)
