@@ -1,0 +1,30 @@
+# 7-base_geometry.txt
+===============================
+ How to 7-base_geometry.txt
+ ===============================
+
+This module defines a class ``BaseGeometry`` that  on 6-base_geometry.py.
+
+Usage
+=======
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+	>>> geometry = BaseGeometry()
+	>>> geometry.area()
+	Traceback (most recent call last):
+ 	...
+ 	Exception: area() is not implemented
+
+
+	>>> geometry.integer_validator('width', 10)
+
+	>>> geometry.integer_validator('height', -5)
+    	Traceback (most recent call last):
+        ...
+	ValueError: height must be greater than 0
+
+
+ 	>>> geometry.integer_validator('side_length', 3.5)
+    	Traceback (most recent call last):
+        ...
+    	TypeError: side_length must be an integer
