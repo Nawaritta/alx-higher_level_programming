@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Python - Input/Output"""
 
-
 def pascal_triangle(n):
     """
     Generates Pascal's triangle for a given integer n.
