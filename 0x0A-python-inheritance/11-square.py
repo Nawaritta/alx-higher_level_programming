@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Python - Inheritance"""
+Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
