@@ -48,3 +48,16 @@ Appended list
 	 >>> my_list.append(0)
 	 >>> my_list.print_sorted()
 	 [-5, 0, 10, 20]
+
+Return new list
+
+       >>> my_list = MyList([1, 4, 2, 3])
+       >>> my_list.print_sorted() is my_list
+       [1, 2, 3, 4]
+       False
+
+__str__ test
+
+	>>> my_list = MyList([1, 4, 2, 3])
+	>>> str(my_list)
+	'[1, 4, 2, 3]'
