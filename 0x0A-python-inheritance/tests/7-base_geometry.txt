@@ -30,69 +30,46 @@ Usage
     	TypeError: side_length must be an integer
 
 
-
-
-Test present: integer_validator()
-
  	>>> geometry.integer_validator()
     	Traceback (most recent call last):
-        TypeError: integer_validator() missing 2 required positional arguments:
-	'name' and 'value'
+        TypeError: integer_validator() missing 2 required positional arguments:	'name' and 'value'
 
-
-Test present: integer_validator(“age”)
 
  	>>> geometry.integer_validator("age")
     	Traceback (most recent call last):
-        ...
-    	TypeError: age must be an integer
+        TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Test present: integer_validator(“age”, 0)
 
      	>>> geometry.integer_validator("age", 0)
     	Traceback (most recent call last):
-        ...
     	TypeError: age must be an integer
 
-Test present: integer_validator(“age”, “4”)
 
      	>>> geometry.integer_validator("age", "4")
     	Traceback (most recent call last):
-        ...
     	TypeError: age must be an integer
 
-Test present: integer_validator(“age”, (4,))
 
         >>> geometry.integer_validator("age", (4,))
     	Traceback (most recent call last):
-        ...
     	TypeError: age must be an integer
 
-Test present: integer_validator(“age”, [3])
 
  	>>> geometry.integer_validator("age", [3])
     	Traceback (most recent call last):
-        ...
     	TypeError: age must be an integer
 
-Test present: integer_validator(“age”, True)
 
  	>>> geometry.integer_validator("age", True)
     	Traceback (most recent call last):
-        ...
     	TypeError: age must be an integer
 
-
-Test present: integer_validator(“age”, {3, 4})
 
  	>>> geometry.integer_validator("age", {3, 4})
     	Traceback (most recent call last):
-        ...
     	TypeError: age must be an integer
 
-Test present: integer_validator(“age”, None)
 
      	>>> geometry.integer_validator("age", None)
     	Traceback (most recent call last):
-        ...
 	TypeError: age must be an integer
