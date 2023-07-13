@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-Square = __import__('11-square').Square
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-s = Square(13)
+bg = BaseGeometry()
 
-print(s)
-print(s.area())
+try:
+    bg.integer_validator("height", True)
+    print("no")
+except Exception as e:
+    print("err")
+    print(e)
+    print(type(e))
