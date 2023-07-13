@@ -5,8 +5,13 @@ bg = BaseGeometry()
 
 try:
     bg.integer_validator("height", True)
-    print("no")
 except Exception as e:
     print("err")
     print(e)
     print(type(e))
+
+
+try:
+    bg.integer_validator("distance", True)
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))

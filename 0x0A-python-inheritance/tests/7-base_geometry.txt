@@ -66,4 +66,5 @@ Usage
 
 
      	>>> geometry.integer_validator("height", True)
-	...
+    	Traceback (most recent call last):
+	TypeError: height must be an integer
