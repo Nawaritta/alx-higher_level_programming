@@ -1,0 +1,78 @@
+# 7-base_geometry.txt
+===============================
+ How to 7-base_geometry.txt
+ ===============================
+
+This module defines a class ``BaseGeometry`` that  on 6-base_geometry.py.
+
+Usage
+=======
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+	>>> geometry = BaseGeometry()
+	>>> geometry.area()
+	Traceback (most recent call last):
+ 	...
+ 	Exception: area() is not implemented
+
+
+	>>> geometry.integer_validator('width', 10)
+
+	>>> geometry.integer_validator('height', -5)
+    	Traceback (most recent call last):
+        ...
+	ValueError: height must be greater than 0
+
+
+ 	>>> geometry.integer_validator('side_length', 3.5)
+    	Traceback (most recent call last):
+        ...
+    	TypeError: side_length must be an integer
+
+
+ 	>>> geometry.integer_validator()
+    	Traceback (most recent call last):
+        TypeError: integer_validator() missing 2 required positional arguments:	'name' and 'value'
+
+
+ 	>>> geometry.integer_validator("height")
+    	Traceback (most recent call last):
+        TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+
+     	>>> geometry.integer_validator("height", "4")
+    	Traceback (most recent call last):
+    	TypeError: height must be an integer
+
+
+        >>> geometry.integer_validator("height", (4,))
+    	Traceback (most recent call last):
+    	TypeError: height must be an integer
+
+
+ 	>>> geometry.integer_validator("height", [3])
+    	Traceback (most recent call last):
+    	TypeError: height must be an integer
+
+
+ 	>>> geometry.integer_validator("height", {3, 4})
+    	Traceback (most recent call last):
+    	TypeError: height must be an integer
+
+
+     	>>> geometry.integer_validator("height", None)
+    	Traceback (most recent call last):
+	TypeError: height must be an integer
+
+
+     	>>> geometry.integer_validator("height", True)
+    	Traceback (most recent call last):
+#!/usr/bin/python3
+"""Python - Inheritance"""
+
+
+class BaseGeometry:
+    """
+        Base geo
+	    Public Methods:
+	            area(): Raises an exception indicating that[Gotnothing]
