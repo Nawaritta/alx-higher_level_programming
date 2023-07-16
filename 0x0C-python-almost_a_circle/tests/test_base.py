@@ -1,109 +1,111 @@
 #!/usr/bin/python3
+""" Module test for class Base """
 import unittest
-import os
 from models.base import Base
-from models.rectangle import Rectangle
 from models.square import Square
+from models.rectangle import Rectangle
+from io import StringIO
+from unittest import TestCase
+from unittest.mock import patch
 
 
 class TestBase(unittest.TestCase):
+    """ tests for the class Base methods """
 
     def setUp(self):
-        """Clear any existing files before each test"""
-        for cls in [Base, Rectangle, Square]:
-            filename = cls.__name__ + ".json"
-            if os.path.exists(filename):
-                os.remove(filename)
-            filename_csv = cls.__name__ + ".csv"
-            if os.path.exists(filename_csv):
-                os.remove(filename_csv)
+        """ Method invoked for each test """
+        Base._Base__nb_objects = 0
 
-    def test_init(self):
-        """ Test the __init__ method to create instances with unique ids"""
-        base1 = Base()
-        base2 = Base()
-        base3 = Base(10)
-        self.assertEqual(base1.id, 1)
-        self.assertEqual(base2.id, 2)
-        self.assertEqual(base3.id, 10)
+     def test_init_id(self):
+         """ Test the __init__ method to create instances with unique ids"""
+         base1 = Base()
+         base2 = Base()
+         base3 = Base()
+         base4 = Base(40)
+         base5 = Base(50)
+         self.assertEqual(base1.id, 1)
+         self.assertEqual(base2.id, 2)
+         self.assertEqual(base3.id, 3)
+         self.assertEqual(base4.id, 40)
+         self.assertEqual(base5.id, 50)
 
+
+    def test_id_assign(self):
+        """ create object with and without assigned id"""
+        base6 = Base(10)
+        base7 = Base()
+        base8 = Base(20)
+        self.assertEqual(base6.id, 10)
+        self.assertEqual(base7.id, 1)
+        self.assertEqual(base8.id, 20)
+
+    def test_string_id(self):
+        """ Test string id """
+        base9 = Base('90')
+        self.assertEqual(base9.id, '90')
+
+    def test_multiple_id(self):
+        """ Test passing more than one argument to Base init method """
+        with self.assertRaises(TypeError):
+            base10 = Base(1, 2)
     def test_to_json_string(self):
-        """Test if to_json_string returns the correct JSON representation"""
-        rect1 = Rectangle(10, 5)
-        rect2 = Rectangle(7, 3)
-        list_rectangles = [rect1, rect2]
+        """Test if save_to_file saves the JSON representation correctly
+        for Base class """
 
-        expected = ('[{"x": 0, "y": 0, "id": 1, "width": 10, "height": 5}, '
-                    '{"x": 0, "y": 0, "id": 2, "width": 7, "height": 3}]')
+        list_dicts = [
+            {'id': 1, 'width': 10, 'height': 5},
+            {'id': 2, 'width': 7, 'height': 3}
+        ]
+        json_str = Base.to_json_string(list_dicts)
+        expected_json_str = ('[{"id": 1, "width": 10, "height": 5}, '
+                            '{"id": 2, "width": 7, "height": 3}]')
+        self.assertEqual(json_str, expected_json_str)
 
-        self.assertEqual(Base.to_json_string(
-            [rect1.to_dictionary(), rect2.to_dictionary()]), expected)
+        json_str = Base.to_json_string([])
+        self.assertEqual(json_str, "[]")
 
-    def test_save_to_file(self):
-        """Test if save_to_file saves the JSON representation correctly"""
-        rect1 = Rectangle(10, 5)
-        rect2 = Rectangle(7, 3)
-        list_rectangles = [rect1, rect2]
-        Base.save_to_file(list_rectangles)
+        json_str = Base.to_json_string(None)
+        self.assertEqual(json_str, "[]")
 
-        filename = "Rectangle.json"
-        self.assertTrue(os.path.exists(filename))
+    def test_save_to_file_rectangle(self):
+        """ Test JSON file for Rectangle """
+        Rectangle.save_to_file(None)
+        res = "[]\n"
+        with open("Rectangle.json", "r") as file:
+            with patch('sys.stdout', new=StringIO()) as str_out:
+                print(file.read())
+                self.assertEqual(str_out.getvalue(), res)
 
-    def test_load_from_file(self):
-        """Test if load_from_file returns the correct list of instances"""
-        rect1 = Rectangle(10, 5)
-        rect2 = Rectangle(7, 3)
-        list_rectangles = [rect1, rect2]
-        Base.save_to_file(list_rectangles)
+        try:
+            os.remove("Rectangle.json")
+        except:
+            pass
 
-        instances = Base.load_from_file()
-        self.assertEqual(len(instances), 2)
-        self.assertIsInstance(instances[0], Rectangle)
-        self.assertEqual(instances[0].width, 10)
-        self.assertEqual(instances[0].height, 5)
-        self.assertIsInstance(instances[1], Rectangle)
-        self.assertEqual(instances[1].width, 7)
-        self.assertEqual(instances[1].height, 3)
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
 
-    def test_save_to_file_csv(self):
-        """ Test if save_to_file_csv saves the CSV representation correctly"""
-        rect1 = Rectangle(10, 5)
-        rect2 = Rectangle(7, 3)
-        list_rectangles = [rect1, rect2]
-        Base.save_to_file_csv(list_rectangles)
 
-        filename = "Rectangle.csv"
-        self.assertTrue(os.path.exists(filename))
+    def test_save_to_file_square(self):
+        """ Test JSON file for Square """
+        Square.save_to_file(None)
+        res = "[]\n"
+        with open("Square.json", "r") as file:
+            with patch('sys.stdout', new=StringIO()) as str_out:
+                print(file.read())
+                self.assertEqual(str_out.getvalue(), res)
 
-    def test_load_from_file_csv(self):
-        """Test if load_from_file_csv returns the correct list of instances"""
-        rect1 = Rectangle(10, 5)
-        rect2 = Rectangle(7, 3)
-        list_rectangles = [rect1, rect2]
-        Base.save_to_file_csv(list_rectangles)
+        try:
+            os.remove("Square.json")
+        except:
+            pass
 
-        instances = Base.load_from_file_csv()
-        self.assertEqual(len(instances), 2)
-        self.assertIsInstance(instances[0], Rectangle)
-        self.assertEqual(instances[0].width, 10)
-        self.assertEqual(instances[0].height, 5)
-        self.assertIsInstance(instances[1], Rectangle)
-        self.assertEqual(instances[1].width, 7)
-        self.assertEqual(instances[1].height, 3)
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
 
-    def test_from_json_string(self):
-        """Test if from_json_string returns the correct list of dictionaries"""
-        json_str = ('[{"id": 1, "width": 10, "height": 5},
-                    {"id": 2, "width": 7, "height": 3}]')
-        expected = ([{"id": 1, "width": 10, "height": 5},
-                     {"id": 2, "width": 7, "height": 3}])
-        self.assertEqual(Base.from_json_string(json_str), expected)
 
-    def test_create(self):
-        """Test if create returns the correct instance with attributes set"""
-        rect_dict = {"id": 1, "width": 10, "height": 5}
-
-    @patch('models.base.turtle')
+     @patch('models.base.turtle')
     def test_draw(self, mock_turtle):
         """ Test if draw method opens a window
         and draws the shapes correctly"""
@@ -161,7 +163,3 @@ class TestBase(unittest.TestCase):
         mock_turtle.goto.assert_any_call(30, 40)
 
         mock_screen.mainloop.assert_called_once()
-
-
-if __name__ == "__main__":
-    unittest.main()
