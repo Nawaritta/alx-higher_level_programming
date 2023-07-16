@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import unittest
 import os
 from models.base import Base
@@ -32,8 +33,11 @@ class TestBase(unittest.TestCase):
         rect2 = Rectangle(7, 3)
         list_rectangles = [rect1, rect2]
 
-        expected_result = '[{"x": 0, "y": 0, "id": 1, "width": 10, "height": 5}, {"x": 0, "y": 0, "id": 2, "width": 7, "height": 3}]'
-        self.assertEqual(Base.to_json_string([rect1.to_dictionary(), rect2.to_dictionary()]), expected_result)
+        expected = ('[{"x": 0, "y": 0, "id": 1, "width": 10, "height": 5}, '
+                    '{"x": 0, "y": 0, "id": 2, "width": 7, "height": 3}]')
+
+        self.assertEqual(Base.to_json_string(
+            [rect1.to_dictionary(), rect2.to_dictionary()]), expected)
 
     def test_save_to_file(self):
         """Test if save_to_file saves the JSON representation correctly"""
@@ -87,12 +91,13 @@ class TestBase(unittest.TestCase):
         self.assertEqual(instances[1].width, 7)
         self.assertEqual(instances[1].height, 3)
 
-
     def test_from_json_string(self):
         """Test if from_json_string returns the correct list of dictionaries"""
-        json_str = '[{"id": 1, "width": 10, "height": 5}, {"id": 2, "width": 7, "height": 3}]'
-        expected_result = [{"id": 1, "width": 10, "height": 5}, {"id": 2, "width": 7, "height": 3}]
-        self.assertEqual(Base.from_json_string(json_str), expected_result)
+        json_str = ('[{"id": 1, "width": 10, "height": 5},
+                    {"id": 2, "width": 7, "height": 3}]')
+        expected = ([{"id": 1, "width": 10, "height": 5},
+                     {"id": 2, "width": 7, "height": 3}])
+        self.assertEqual(Base.from_json_string(json_str), expected)
 
     def test_create(self):
         """Test if create returns the correct instance with attributes set"""
@@ -100,7 +105,8 @@ class TestBase(unittest.TestCase):
 
     @patch('models.base.turtle')
     def test_draw(self, mock_turtle):
-        """ Test if draw method opens a window and draws the shapes correctly"""
+        """ Test if draw method opens a window
+        and draws the shapes correctly"""
 
         mock_screen = MagicMock()
         mock_turtle.Screen.return_value = mock_screen
@@ -120,7 +126,8 @@ class TestBase(unittest.TestCase):
         mock_turtle.Screen.assert_called_once()
         mock_turtle.Turtle.assert_called()
 
-        """Ensure that turtle methods for drawing rectangles and squares were called"""
+        """Ensure that turtle methods for drawing rectangles
+        and squares were called"""
         mock_turtle.penup.assert_any_call()
         mock_turtle.goto.assert_any_call(10, 20)
         mock_turtle.pendown.assert_any_call()
@@ -154,6 +161,7 @@ class TestBase(unittest.TestCase):
         mock_turtle.goto.assert_any_call(30, 40)
 
         mock_screen.mainloop.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()

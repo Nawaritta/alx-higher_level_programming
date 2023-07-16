@@ -12,6 +12,7 @@ from models.base import Base
 import unittest
 from models.square import Square
 
+
 class TestSquare(unittest.TestCase):
 
     def setUp(self):
@@ -82,6 +83,7 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError) as context:
             self.square.id = "invalid_id"
         self.assertEqual(str(context.exception), "id must be an integer")
+
 
 if __name__ == "__main__":
     unittest.main()
