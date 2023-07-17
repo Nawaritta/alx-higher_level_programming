@@ -33,10 +33,13 @@ class Square(Rectangle):
         attribute_list = ['id', 'width', 'height', 'x', 'y']
         if args:
             self.id = args[0]
-            self.width = args[1]
-            self.height = args[1]
-            self.x = args[2]
-            self.y = args[3]
+            if len(args) >= 2:
+                self.width = args[1]
+                self.height = args[1]
+            if len(args) >= 3:
+                self.x = args[2]
+            if len(args) >= 4:
+                self.y = args[3]
         else:
             if 'id' in kwargs:
                 self.id = kwargs['id']

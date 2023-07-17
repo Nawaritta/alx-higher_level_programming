@@ -75,14 +75,15 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        print('\n' * self.y)
+        for yy in range(self.y):
+            print()
         for h in range(self.height):
             print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         """ Returns a string representation of the rectangle."""
-        return f"[Rectangle] ({self.id}) \
-        {self.x}/{self.y} - {self.width}/{self.height}"
+        return (f"[Rectangle] ({self.id}) "
+                f"{self.x}/{self.y} - {self.width}/{self.height}")
 
     def update(self, *args, **kwargs):
         """ update the attributes using positional or keyword arguments.
