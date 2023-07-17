@@ -111,6 +111,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """Draws Rectangles and squares"""
         screen = turtle.Screen()
         screen.setup(width=800, height=600)
         screen.title("Rectangles and Squares")
