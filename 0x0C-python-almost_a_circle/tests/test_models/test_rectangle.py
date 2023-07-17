@@ -18,20 +18,20 @@ class TestRectangle(unittest.TestCase):
     def test_init_rectangle(self):
         """ Test creation of rectangle objects """
         rectangle1 = Rectangle(1, 2)
-        self.assertEqual(rectangle.width, 1)
-        self.assertEqual(rectangle.height, 2)
-        self.assertEqual(rectangle.x, 0)
-        self.assertEqual(rectangle.y, 0)
-        self.assertEqual(rectangle.id, 1)
+        self.assertEqual(rectangle1.width, 1)
+        self.assertEqual(rectangle1.height, 2)
+        self.assertEqual(rectangle1.x, 0)
+        self.assertEqual(rectangle1.y, 0)
+        self.assertEqual(rectangle1.id, 1)
 
     def test_init_rectangle_with_attrs(self):
         """ Test new rectangle with all attrs """
         rectangle2 = Rectangle(1, 2, 3, 4, 2)
-        self.assertEqual(rectangle.width, 1)
-        self.assertEqual(rectangle.height, 2)
-        self.assertEqual(rectangle.x, 3)
-        self.assertEqual(rectangle.y, 4)
-        self.assertEqual(rectangle.id, 2)
+        self.assertEqual(rectangle2.width, 1)
+        self.assertEqual(rectangle2.height, 2)
+        self.assertEqual(rectangle2.x, 3)
+        self.assertEqual(rectangle2.y, 4)
+        self.assertEqual(rectangle2.id, 2)
 
     def test_rectangle_rectangles(self):
         """ Test new rectangles """
@@ -43,7 +43,7 @@ class TestRectangle(unittest.TestCase):
     def test_is_Base_instance(self):
         """ Test Rectangle is a Base instance """
         rectangle5 = Rectangle(1, 1)
-        self.assertEqual(True, isinstance(rectangle, Base))
+        self.assertEqual(True, isinstance(rectangle5, Base))
 
     def test_invalid_attrs_number(self):
         """ Test error raise with less than 5 arg passed """
@@ -70,7 +70,7 @@ class TestRectangle(unittest.TestCase):
     def test_valide_attrs(self):
         """ Trying to pass a string value """
         with self.assertRaises(TypeError):
-            rectangle = Rectangle("2", 2, 2, 2, 2)
+            rectangle12 = Rectangle("2", 2, 2, 2, 2)
 
     def test_valide_attrs_2(self):
         """ Trying to pass a string value """
@@ -132,7 +132,7 @@ class TestRectangle(unittest.TestCase):
         """ Test string printed """
         r1 = Rectangle(2, 5)
         res = "##\n##\n##\n##\n##\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
@@ -140,13 +140,13 @@ class TestRectangle(unittest.TestCase):
         """ Test string printed """
         r1 = Rectangle(2, 2)
         res = "##\n##\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
         r1.width = 5
         res = "#####\n#####\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
@@ -154,7 +154,7 @@ class TestRectangle(unittest.TestCase):
         """ Test __str__ return value """
         r1 = Rectangle(2, 5, 2, 4)
         res = "[Rectangle] (1) 2/4 - 2/5\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
 
@@ -162,7 +162,7 @@ class TestRectangle(unittest.TestCase):
         """ Test __str__ return value """
         r1 = Rectangle(3, 2, 8, 8, 10)
         res = "[Rectangle] (10) 8/8 - 3/2\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
 
@@ -170,7 +170,7 @@ class TestRectangle(unittest.TestCase):
         r1.width = 7
         r1.height = 15
         res = "[Rectangle] (1) 8/8 - 7/15\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
 
@@ -178,19 +178,19 @@ class TestRectangle(unittest.TestCase):
         """ Test __str__ return value """
         r1 = Rectangle(5, 10)
         res = "[Rectangle] (1) 0/0 - 5/10\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
 
         r2 = Rectangle(25, 86, 4, 7)
         res = "[Rectangle] (2) 4/7 - 25/86\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r2)
             self.assertEqual(str_out.getvalue(), res)
 
         r3 = Rectangle(1, 1, 1, 1)
         res = "[Rectangle] (3) 1/1 - 1/1\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r3)
             self.assertEqual(str_out.getvalue(), res)
 
@@ -204,7 +204,7 @@ class TestRectangle(unittest.TestCase):
         """ Test string printed """
         r1 = Rectangle(5, 4, 1, 1)
         res = "\n #####\n #####\n #####\n #####\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
@@ -212,19 +212,19 @@ class TestRectangle(unittest.TestCase):
         """ Test string printed """
         r1 = Rectangle(3, 2)
         res = "###\n###\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
         r1.x = 4
         res = "    ###\n    ###\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
         r1.y = 2
         res = "\n\n    ###\n    ###\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             r1.display()
             self.assertEqual(str_out.getvalue(), res)
 
@@ -232,7 +232,7 @@ class TestRectangle(unittest.TestCase):
         """ Test dictionary returned """
         r1 = Rectangle(1, 2, 3, 4, 1)
         res = "[Rectangle] (1) 3/4 - 1/2\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
 
@@ -244,7 +244,7 @@ class TestRectangle(unittest.TestCase):
 
         res = "<class 'dict'>\n"
 
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(type(r1.to_dictionary()))
             self.assertEqual(str_out.getvalue(), res)
 
@@ -252,13 +252,13 @@ class TestRectangle(unittest.TestCase):
         """ Test dictionary returned """
         r1 = Rectangle(2, 2, 2, 2)
         res = "[Rectangle] (1) 2/2 - 2/2\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r1)
             self.assertEqual(str_out.getvalue(), res)
 
         r2 = Rectangle(5, 7)
         res = "[Rectangle] (2) 0/0 - 5/7\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(r2)
             self.assertEqual(str_out.getvalue(), res)
 
@@ -272,7 +272,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.id, r2.id)
 
         res = "<class 'dict'>\n"
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(type(r1_dictionary))
             self.assertEqual(str_out.getvalue(), res)
 
@@ -283,7 +283,7 @@ class TestRectangle(unittest.TestCase):
         json_dictionary = Base.to_json_string([dictionary])
         res = "[{}]\n".format(dictionary.__str__())
 
-        with patch('sys.stdout', rectangle=StringIO()) as str_out:
+        with patch('sys.stdout', new=StringIO()) as str_out:
             print(json_dictionary)
             self.assertEqual(str_out.getvalue(), res.replace("'", "\""))
 
