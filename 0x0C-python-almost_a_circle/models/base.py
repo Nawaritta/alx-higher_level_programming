@@ -121,7 +121,7 @@ class Base:
             t.penup()
             t.goto(rect.x, rect.y)
             t.pendown()
-            t.color("blue")  
+            t.color("blue")
             for _ in range(2):
                 t.forward(rect.width)
                 t.left(90)
@@ -132,7 +132,7 @@ class Base:
             t.penup()
             t.goto(square.x, square.y)
             t.pendown()
-            t.color("red")  
+            t.color("red")
             for _ in range(4):
                 t.forward(square.size)
                 t.left(90)
