@@ -85,29 +85,40 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """ Serializes in CSV"""
+        """ Serializes objects to a CSV file """
         filename = cls.__name__ + ".csv"
-        list_keys = ['id', 'width', 'height', 'x', 'y']
-        if cls.__name__ == "Square":
-            list_keys = ['id', 'size', 'x', 'y']
-        matrix = [obj.to_dictionary() for obj in list_objs] \
-            if list_objs else []
-        with open(filename, 'w', newline='') as wf:
-            writer = csv.DictWriter(wf, fieldnames=list_keys)
-            writer.writeheader()
-            writer.writerows(matrix)
+        with open(filename, 'w', newline='') as f:
+            writer = csv.writer(f)
+
+            if cls.__name__ == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fieldnames = ["id", "size", "x", "y"]
+            else:
+                fieldnames = []
+
+            writer.writerow(fieldnames)
+
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary().values())
 
     @classmethod
     def load_from_file_csv(cls):
-        """Deserializes in CSV"""
+        """ Deserializes objects from a CSV file """
         filename = cls.__name__ + ".csv"
         if not os.path.exists(filename):
             return []
 
-        with open(filename, 'r', newline='') as readFile:
-            reader = csv.DictReader(readFile)
-            instances_list = [cls.create(**row) for row in reader]
-            return instances_list
+        instances_list = []
+
+        with open(filename, 'r') as f:
+            reader = csv.DictReader(f)
+
+            for row in reader:
+                dictionary = {k: int(v) for k, v in row.items()}
+                instances_list.append(cls.create(**dictionary))
+
+        return instances_list
 
     @staticmethod
     def draw(list_rectangles, list_squares):
