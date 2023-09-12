@@ -8,9 +8,10 @@ if (argv.length < 4) {
   let sec = Number(argv[3]);
   let i = 3;
   for (;i < argv.length; i++) {
-    if (Number(argv[i]) > biggest) {
-      sec = biggest;
-      biggest = Number(argv[i]);
+    const x = Number(argv[i]);
+    if (x > sec) {
+      if (x > biggest) { biggest = x; }
+      if (x < biggest) { sec = x; }
     }
   }
   console.log(sec);
