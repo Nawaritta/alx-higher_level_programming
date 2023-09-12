@@ -10,8 +10,7 @@ if (argv.length < 4) {
   for (;i < argv.length; i++) {
     const x = Number(argv[i]);
     if (x > sec) {
-      if (x > biggest) { biggest = x; }
-      if (x < biggest) { sec = x; }
+      if (x > biggest) { sec = biggest; biggest = x; } else if (x < biggest) { sec = x; }
     }
   }
   console.log(sec);
