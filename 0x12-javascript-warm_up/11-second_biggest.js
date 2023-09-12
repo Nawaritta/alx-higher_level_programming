@@ -6,7 +6,7 @@ if (argv.length < 4) {
 } else {
   let biggest = Number(argv[2]);
   let sec = Number(argv[3]);
-  let i = 3;
+  let i = 2;
   for (;i < argv.length; i++) {
     const x = Number(argv[i]);
     if (x > sec) {
