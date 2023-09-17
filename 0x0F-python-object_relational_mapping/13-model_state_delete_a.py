@@ -20,5 +20,5 @@ if __name__ == "__main__":
 
     for state in session.query(State).order_by(State.id):
         if "a" in state.name:
-             session.delete(state)
-             session.commit()
+            session.delete(state)
+            session.commit()
