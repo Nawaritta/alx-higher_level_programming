@@ -8,9 +8,8 @@ def find_peak(list_of_integers):
     """
     Returns the first peak if it exists
     """
-    if not list_of_integers or len(list_of_integers)== 0:
+    if not list_of_integers or len(list_of_integers) == 0:
         return None
-    
     i = 0
     up = 0
     while i < len(list_of_integers):
@@ -25,7 +24,6 @@ def find_peak(list_of_integers):
             if up and (i+1 < len(list_of_integers)):
                 if list_of_integers[i+1] < list_of_integers[i]:
                     return list_of_integers[i]
-        i+=1
-    return peak
+        i += 1
 
-            
+    return peak
