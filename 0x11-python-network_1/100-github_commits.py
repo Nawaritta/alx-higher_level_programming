@@ -16,7 +16,7 @@ if __name__ == "__main__":
     commits = response.json()
     try:
         for i in range(10):
-            print(f"{commits[i].get('sha')}: ")
+            print(f"{commits[i].get('sha')}: ", end='')
             print(f"{commits[i].get('commit').get('author').get('name')}")
     except IndexError:
         pass
