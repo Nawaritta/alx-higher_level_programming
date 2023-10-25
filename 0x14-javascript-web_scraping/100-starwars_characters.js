@@ -13,8 +13,12 @@ request.get(apiUrl, (error, response, body) => {
         if (!error) {
           const characterInfo = JSON.parse(body);
           console.log(characterInfo.name);
+        } else {
+          console.log(error);
         }
       });
     }
+  } else {
+    console.log(error);
   }
 });
